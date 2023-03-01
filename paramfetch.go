@@ -177,9 +177,10 @@ func hasTrustableExtension(path string) bool {
 }
 
 func (ft *fetch) checkFile(path string, info paramFile) error {
-	isSnapParam := strings.HasPrefix(filepath.Base(path), "v28-empty-sector-update")
+	//isSnapParam := strings.HasPrefix(filepath.Base(path), "v28-empty-sector-update")
 
-	if !isSnapParam && os.Getenv("TRUST_PARAMS") == "1" && hasTrustableExtension(path) {
+	//if !isSnapParam && os.Getenv("TRUST_PARAMS") == "1" && hasTrustableExtension(path) {
+	if os.Getenv("TRUST_PARAMS") == "1" && hasTrustableExtension(path) {
 		log.Debugf("Skipping param check: %s", path)
 		log.Warn("Assuming parameter files are ok. DO NOT USE IN PRODUCTION")
 		return nil
